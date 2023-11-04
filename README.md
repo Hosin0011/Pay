@@ -1,13 +1,14 @@
-def is_prime(num):
-    if num <= 1:
-        return False
-    for i in range(2, int(num**0.5) + 1):
-        if num % i == 0:
-            return False
-    return True
+def count_character_frequency(sentence):
+    char_frequency = {}
+    for char in sentence:
+        if char.isalpha():
+            char = char.lower()
+            char_frequency[char] = char_frequency.get(char, 0) + 1
+    return char_frequency
 
-num = int(input("Enter a number: "))
-if is_prime(num):
-    print(num, "is a prime number.")
-else:
-    print(num, "is not a prime number.")
+input_sentence = input("Enter a sentence: ")
+result = count_character_frequency(input_sentence)
+
+print("Character Frequencies:")
+for char, frequency in result.items():
+    print(f"{char}: {frequency}")
